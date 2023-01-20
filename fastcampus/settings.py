@@ -25,7 +25,7 @@ SECRET_KEY = '%pg4j0rg=13uw53v10th28&4ns@8-j90a9o^7-4lrmc$a-kzdm'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost','127.0.0.1','ec2-43-201-86-100.ap-northeast-2.compute.amazonaws.com']
+ALLOWED_HOSTS = ['ec2-43-201-86-100.ap-northeast-2.compute.amazonaws.com','127.0.0.1','*']
 
 
 # Application definition
@@ -88,11 +88,11 @@ WSGI_APPLICATION = 'fastcampus.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'project1', # DB명
-        'USER': 'admin', # 데이터베이스 계정
-        'PASSWORD': '1234qwer', # 계정 비밀번호
-        'HOST': 'project1.cgkoun7pqwlg.ap-northeast-2.rds.amazonaws.com', # 데이테베이스 주소(IP)
-        'PORT': '3306', # 데이터베이스 포트(보통은 3306)
+        'NAME': 'project1',  
+        'USER': 'admin', 
+        'PASSWORD': '1234qwer',  
+        'HOST': 'project1.cgkoun7pqwlg.ap-northeast-2.rds.amazonaws.com', 
+        'PORT': '3306',  
     }
 }
 
