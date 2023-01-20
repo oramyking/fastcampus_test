@@ -1,0 +1,19 @@
+
+{% if menu_list %}
+<form action="{% url 'order:order' %}" method="POST">
+<ol> 
+    <h4> 주문하실 음식을 골라 주세요 </h4>
+    {% for menu in menu_list %}
+      <input type="checkbox" id="menu{{forloop.counter}}" name="menu" value="{{menu.food_name}}"> {{menu.food_name}}<br>
+    {% endfor %}
+</ol>
+<ol> 
+    <h4> 집주소를 알려주세요. </h4>
+      <input type="text" name="address"  required> 
+      <input type="hidden" name="shop"  value="{{shop}}">
+</ol>
+    <input type="submit"   value="commit ">
+</form> 
+{% else %}
+  <h5> 준비중 </h5>
+ {% endif %}
