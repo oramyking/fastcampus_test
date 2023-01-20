@@ -7,42 +7,12 @@ from order.models import Shop, Menu, Order, Orderfood
 from django.utils import timezone 
 from django.urls import reverse
 
-# @csrf_exempt
-# def shop(request):
-#     if request.method=='GET':
-#         shop=Shop.objects.all()
-#         serializer=ShopSerializer(shop, many=True)
-#         return JsonResponse(serializer.data, safe=False)
-    
-#     elif  request.method=='POST':
-#         data=JSONParser().parse(request)
-#         serializer=ShopSerializer(data=data)
-#         if serializer.is_valid():
-#             serializer.save()
-#             return JsonResponse(serializer.data, status=202)
-#         return JsonResponse(serializer.errors, status=400)
-    
-# @csrf_exempt
-# def menu(request):
-#     if request.method=='GET':
-#         menu=Menu.objects.all()
-#         serializer=MenuSerializer(menu, many=True)
-#         return JsonResponse(serializer.data, safe=False)
-    
-#     elif  request.method=='POST':
-#         data=JSONParser().parse(request)
-#         serializer=MenuSerializer(data=data)
-#         if serializer.is_valid():
-#             serializer.save()
-#             return JsonResponse(serializer.data, status=202)
-#         return JsonResponse(serializer.errors, status=400)
-
 @csrf_exempt
 def shop(request):
     if request.method=='GET':
         shop=Shop.objects.all()
         return render(request, 'order/shoplist.html', {'shop_list':shop})
-    
+
     elif  request.method=='POST':
         data=JSONParser().parse(request)
         serializer=ShopSerializer(data=data)
@@ -54,9 +24,9 @@ def shop(request):
 @csrf_exempt
 def menu(request, shop_id):
     if request.method=='GET':
-        menu=Menu.objects.filter(shop=shop_id) 
+        menu=Menu.objects.filter(shop=shop_id)
         return render(request, 'order/menulist.html', {'menu_list': menu, 'shop': shop_id })
-    
+
     elif  request.method=='POST':
         data=JSONParser().parse(request)
         serializer=MenuSerializer(data=data)

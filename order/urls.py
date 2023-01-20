@@ -7,6 +7,7 @@ app_name='order'
 urlpatterns = [
     path('shops/', views.shop, name='shop'), 
     path('menus/<int:shop_id>', views.menu, name='menu'), 
+    #path('menus/', views.menu, name='menu'), 
     path('order/' , views.order , name='order')
 ]
 
